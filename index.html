@@ -26,11 +26,22 @@
         .mySlides {
             display: none;
             width: 100%;
-            max-height: 400px; /* Cap the height */
-            height: auto; /* Allow height to adjust based on content */
-            object-fit: contain; /* Ensures the whole image is visible without trimming */
+            /* Removed height/max-height from .mySlides itself */
             background-color: #f0f0f0; /* Light background for empty space if image is smaller */
             border-radius: 0.5rem; /* rounded-lg */
+            /* Added flex properties to center the image within the slide container */
+            display: flex; /* Will be overridden by JS display:block, but good for initial centering */
+            justify-content: center;
+            align-items: center;
+            min-height: 200px; /* Ensure a minimum height for the slide container */
+        }
+        .mySlides img { /* Apply height constraints directly to the image */
+            max-width: 100%;
+            max-height: 400px; /* Cap the height here */
+            width: auto; /* Allow width to adjust based on content */
+            height: auto;
+            object-fit: contain; /* Ensures the whole image is visible without trimming */
+            cursor: pointer; /* Indicate that images are clickable for zoom */
         }
         .prev, .next {
             cursor: pointer;
@@ -64,11 +75,6 @@
         @keyframes fade {
             from {opacity: .4}
             to {opacity: 1}
-        }
-        /* Ensure responsive image handling */
-        img {
-            max-width: 100%;
-            height: auto;
         }
     </style>
 </head>
@@ -134,7 +140,7 @@
                         <img src="slide2.jpg" alt="Vehicle Styling Accessories">
                     </div>
                     <div class="mySlides home-slide fade">
-                        <img src="https://placehold.co/1200x400/BA68C8/FFFFFF?text=GPS+Tracking+Solutions" alt="GPS Tracking Solutions">
+                        <img src="slide3.jpg" alt="GPS Tracking Solutions">
                     </div>
                     <a class="prev" onclick="plusSlides(-1, 'home-slide')">&#10094;</a>
                     <a class="next" onclick="plusSlides(1, 'home-slide')">&#10095;</a>
@@ -402,6 +408,14 @@
         </div>
     </footer>
 
+    <!-- Image Zoom Modal -->
+    <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+        <div class="relative bg-white rounded-lg p-4 max-w-3xl max-h-full overflow-auto">
+            <button id="close-modal" class="absolute top-2 right-2 text-gray-800 hover:text-gray-600 text-3xl font-bold leading-none">&times;</button>
+            <img id="modal-image" src="" alt="Zoomed Image" class="max-w-full max-h-[80vh] object-contain mx-auto rounded-md">
+        </div>
+    </div>
+
     <script>
         // Hamburger Menu Toggle
         document.getElementById('hamburger-button').addEventListener('click', function() {
@@ -425,22 +439,60 @@
         function showSlides(n, className) {
             let i;
             let slides = document.getElementsByClassName(className);
+            // Handle current slide index
             if (n > slides.length) {slideIndex[className] = 1}
             if (n < 1) {slideIndex[className] = slides.length}
+
+            // Hide all slides
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
-            slides[slideIndex[className]-1].style.display = "block";
+            // Display the current slide
+            slides[slideIndex[className]-1].style.display = "flex"; // Use flex to allow centering
         }
 
         function plusSlides(n, className) {
             showSlides(slideIndex[className] += n, className);
         }
 
-        // Initialize slideshows on page load
+        // Image Zoom Modal functionality
+        const imageModal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeModalButton = document.getElementById('close-modal');
+
+        // Function to open the modal
+        function openModal(imageSrc) {
+            modalImage.src = imageSrc;
+            imageModal.classList.remove('hidden');
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            imageModal.classList.add('hidden');
+            modalImage.src = ''; // Clear image source
+        }
+
+        // Event listener for closing modal via button
+        closeModalButton.addEventListener('click', closeModal);
+
+        // Event listener for closing modal by clicking outside the image
+        imageModal.addEventListener('click', (event) => {
+            if (event.target === imageModal) { // Only close if clicking the background, not the image itself
+                closeModal();
+            }
+        });
+
+        // Initialize slideshows and attach click listeners to images
         document.addEventListener('DOMContentLoaded', () => {
             showSlides(1, 'home-slide');
             showSlides(1, 'product-slide');
+
+            // Attach click event listeners to all slideshow images for zooming
+            document.querySelectorAll('.mySlides img').forEach(img => {
+                img.addEventListener('click', function() {
+                    openModal(this.src);
+                });
+            });
         });
 
         // Auto-advance slideshows (optional)
