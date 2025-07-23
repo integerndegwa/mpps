@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPPS Accessories</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom styles for slideshows */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 400px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures images cover the area */
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active-dot, .dot:hover {
+            background-color: #717171;
+        }
+        /* Fade animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+        /* Ensure responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Company Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/50x50/CBD5E1/4A5568?text=LOGO" alt="Company Logo" class="rounded-full">
+                <span class="text-2xl font-bold text-gray-900">MPPS</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Home</a></li>
+                <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 ease-in-out">About Us</a></li>
+                <li><a href="#products" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Products</a></li>
+                <li><a href="#what-we-do" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 ease-in-out">What We Do</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Contact Us</a></li>
+            </ul>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="md:hidden">
+                <button id="hamburger-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white mt-4 rounded-lg shadow-lg">
+            <ul class="flex flex-col space-y-2 py-4 px-6">
+                <li><a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition duration-300 ease-in-out">Home</a></li>
+                <li><a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition duration-300 ease-in-out">About Us</a></li>
+                <li><a href="#products" class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition duration-300 ease-in-out">Products</a></li>
+                <li><a href="#what-we-do" class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition duration-300 ease-in-out">What We Do</a></li>
+                <li><a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2 transition duration-300 ease-in-out">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="pt-20"> <!-- Padding to account for fixed header -->
+
+        <!-- Home Section -->
+        <section id="home" class="py-16 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center rounded-b-3xl shadow-lg mx-auto max-w-7xl mt-4">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Your Trusted Partner for Vehicle Accessories</h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90">Enhancing your driving experience with quality, security, and style.</p>
+
+                <!-- Home Page Slideshow -->
+                <div class="slideshow-container home-slideshow bg-white p-4 rounded-xl shadow-xl">
+                    <div class="mySlides home-slide fade">
+                        <img src="https://placehold.co/1200x400/81C784/FFFFFF?text=Car+Security+Systems" alt="Car Security Systems" class="rounded-lg">
+                    </div>
+                    <div class="mySlides home-slide fade">
+                        <img src="https://placehold.co/1200x400/FFB74D/FFFFFF?text=In-Car+Entertainment" alt="In-Car Entertainment" class="rounded-lg">
+                    </div>
+                    <div class="mySlides home-slide fade">
+                        <img src="https://placehold.co/1200x400/64B5F6/FFFFFF?text=Vehicle+Styling+Accessories" alt="Vehicle Styling Accessories" class="rounded-lg">
+                    </div>
+                    <div class="mySlides home-slide fade">
+                        <img src="https://placehold.co/1200x400/BA68C8/FFFFFF?text=GPS+Tracking+Solutions" alt="GPS Tracking Solutions" class="rounded-lg">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1, 'home-slide')">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 'home-slide')">&#10095;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 bg-white rounded-3xl shadow-lg mx-auto max-w-7xl mt-8 px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">About Us</h2>
+
+                <!-- Introduction -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Introduction</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        MPPS pioneered motor vehicle security in Kenya and are still the market leaders in providing motor vehicle related services.
+                        Over the years we have partnered with suppliers from different corners of the globe to ensure we deliver an ever expanding and
+                        improving range of products to our loyal customers. With the support of our clientele we have now managed to revamp the entire
+                        look of our showroom with ample and secure parking, having better machinery, efficient software, happier and more professional
+                        staff, and an updated website. We do all these and more in order to give our customers the best experience possible.
+                    </p>
+                </div>
+
+                <!-- Why Choose Us? -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Why Choose Us?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 transform hover:scale-105 transition duration-300">
+                            <h4 class="text-xl font-bold text-blue-600 mb-3">UNRIVALLED QUALITY</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                At MPPS, quality is not just a promise; it's our foundation. We meticulously source products from global leaders,
+                                ensuring every item meets the highest international standards. Our commitment to excellence means you receive
+                                accessories that are durable, reliable, and perform flawlessly, giving you peace of mind on every journey.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 transform hover:scale-105 transition duration-300">
+                            <h4 class="text-xl font-bold text-blue-600 mb-3">AFTER SALES SUPPORT</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                Our relationship with you extends far beyond the sale. MPPS prides itself on exceptional after-sales support,
+                                offering expert assistance, reliable warranties, and readily available spare parts. Our dedicated team is always
+                                on hand to ensure your continued satisfaction and to keep your vehicle secure and well-equipped for years to come.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 transform hover:scale-105 transition duration-300">
+                            <h4 class="text-xl font-bold text-blue-600 mb-3">INDUSTRY LEADER</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                For decades, MPPS has set the benchmark for motor vehicle security and accessories in Kenya. Our pioneering spirit,
+                                continuous innovation, and unwavering dedication to customer satisfaction have solidified our position as the
+                                undisputed industry leader. When you choose MPPS, you're choosing experience, expertise, and a legacy of trust.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Our Principles -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Our Principles</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 transform hover:scale-105 transition duration-300">
+                            <h4 class="text-xl font-bold text-blue-600 mb-3">OUR MISSION</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                To empower vehicle owners with innovative, high-quality security and accessory solutions, ensuring their safety,
+                                comfort, and peace of mind on every journey.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 transform hover:scale-105 transition duration-300">
+                            <h4 class="text-xl font-bold text-blue-600 mb-3">OUR VISION</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                To be the most trusted and preferred partner for motor vehicle security and accessories in East Africa,
+                                continuously expanding our offerings and setting new standards of excellence.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 transform hover:scale-105 transition duration-300">
+                            <h4 class="text-xl font-bold text-blue-600 mb-3">OUR STRATEGY</h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                By fostering strong global partnerships, investing in cutting-edge technology, nurturing a highly professional
+                                team, and prioritizing unparalleled customer experience, we aim to maintain our market leadership and drive
+                                sustainable growth.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contacts and Location -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Contacts & Location</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                        <div>
+                            <p class="font-semibold">Piranha Centre, Mombasa Road (HQ)</p>
+                            <p class="font-semibold">Lavington Business Hub, James Gichuru Rd</p>
+                        </div>
+                        <div>
+                            <p><span class="font-semibold">Email:</span> info@mpps.co.ke</p>
+                            <p><span class="font-semibold">Email:</span> sales@mpps.co.ke</p>
+                            <p><span class="font-semibold">Phone:</span> +254 722 169 562</p>
+                            <p><span class="font-semibold">Phone:</span> +254 722 169 452</p>
+                            <p><span class="font-semibold">Phone:</span> +254 713 169 550</p>
+                            <p class="mt-4">
+                                <a href="https://www.facebook.com/mpps.co.ke" target="_blank" class="text-blue-600 hover:underline flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22H12c5.523 0 10-4.477 10-10z" clip-rule="evenodd" />
+                                    </svg>
+                                    Like us on Facebook
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Universal Products Page Section -->
+        <section id="products" class="py-16 bg-gray-100 rounded-3xl shadow-lg mx-auto max-w-7xl mt-8 px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Our Universal Products</h2>
+
+                <!-- Universal Products Slideshow -->
+                <div class="slideshow-container product-slideshow bg-white p-4 rounded-xl shadow-xl">
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/FFD54F/333333?text=Product+Image+1" alt="Product 1" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/A1887F/FFFFFF?text=Product+Image+2" alt="Product 2" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/90A4AE/FFFFFF?text=Product+Image+3" alt="Product 3" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/EF9A9A/FFFFFF?text=Product+Image+4" alt="Product 4" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/80CBC4/FFFFFF?text=Product+Image+5" alt="Product 5" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/C5E1A5/333333?text=Product+Image+6" alt="Product 6" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/FFCDD2/333333?text=Product+Image+7" alt="Product 7" class="rounded-lg">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/B39DDB/FFFFFF?text=Product+Image+8" alt="Product 8" class="rounded-lg">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1, 'product-slide')">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 'product-slide')">&#10095;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section id="what-we-do" class="py-16 bg-white rounded-3xl shadow-lg mx-auto max-w-7xl mt-8 px-6 md:px-12">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">What We Do</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-700">
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Car Alarms</li>
+                        <li>Car Identity / Plate Hold</li>
+                        <li>Central Locking</li>
+                        <li>Gear Locks</li>
+                        <li>GPS Systems</li>
+                        <li>Ignition Repairs</li>
+                        <li>Key Cutting Machines</li>
+                        <li>Key Duplication</li>
+                        <li>Lock Repairs</li>
+                        <li>Pad Locks</li>
+                        <li>Parking Sensors</li>
+                        <li>Reverse Cameras</li>
+                        <li>Wheel Locks</li>
+                        <li>Air Fresheners</li>
+                        <li>Automotive Flag Poles</li>
+                    </ul>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Automotive Bulbs</li>
+                        <li>Automotive Covers</li>
+                        <li>Automotive Floor Mats</li>
+                        <li>Automotive Lights</li>
+                        <li>Automotive Lock</li>
+                        <li>Automotive Seat Covers</li>
+                        <li>Automotive Tinting</li>
+                        <li>Automotive Wipers</li>
+                        <li>Batteries</li>
+                        <li>Bed Liners / Canopies</li>
+                        <li>Body Stickers</li>
+                        <li>Bull Bars / Rear Bars</li>
+                        <li>Fashion Kits / Side Steps</li>
+                        <li>Roof Racks / Roof Rails</li>
+                        <li>Car Care Products</li>
+                    </ul>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Cleaning Equipment</li>
+                        <li>Wheel Caps / Rims</li>
+                        <li>Window Visors</li>
+                        <li>Fire Extinguisher</li>
+                        <li>First Aid Kit</li>
+                        <li>Safety Triangles</li>
+                        <li>Steel Fuel Jerry Cans</li>
+                        <li>HID Bulb Kits</li>
+                        <li>Bluetooth Accessories</li>
+                        <li>In-Car Entertainment</li>
+                        <li>Motorbikes</li>
+                        <li>Quad Bikes</li>
+                        <li>Automotive Body Work</li>
+                        <li>Automotive Suspensions</li>
+                        <li>Mechanical Services</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="py-16 bg-gray-100 rounded-3xl shadow-lg mx-auto max-w-7xl mt-8 px-6 md:px-12 mb-8">
+            <div class="container mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Contact Us</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Mombasa Road Branch -->
+                    <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Mombasa Road Branch (HQ)</h3>
+                        <p class="text-gray-700 mb-2"><span class="font-semibold">Operating Hours:</span></p>
+                        <ul class="list-disc list-inside text-gray-700 mb-4">
+                            <li>Mon-Fri: 08:00 - 16:30</li>
+                            <li>(Closed on Fridays between 12:00 - 14:00 for Prayers)</li>
+                            <li>Sat: 09:00 - 14:00</li>
+                        </ul>
+                        <p class="text-gray-700"><span class="font-semibold">Location:</span> Piranha Centre, Mombasa Road</p>
+                    </div>
+
+                    <!-- Lavington Branch -->
+                    <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Lavington Branch</h3>
+                        <p class="text-gray-700 mb-2"><span class="font-semibold">Operating Hours:</span></p>
+                        <ul class="list-disc list-inside text-gray-700 mb-4">
+                            <li>Mon-Fri: 08:30 - 17:00</li>
+                            <li>(Closed on Fridays between 12:00 - 14:00 for Prayers)</li>
+                            <li>Sat: 09:00 - 14:00</li>
+                        </ul>
+                        <p class="text-gray-700"><span class="font-semibold">Location:</span> Lavington Business Hub, James Gichuru Rd</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center text-gray-700">
+                    <p class="text-xl font-semibold mb-2">Get in Touch:</p>
+                    <p class="mb-1">
+                        <span class="font-semibold">Phone:</span> +254 722 169 562 / +254 722 169 452 / +254 713 169 550
+                    </p>
+                    <p>
+                        <span class="font-semibold">Email:</span> info@mpps.co.ke / sales@mpps.co.ke
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 text-center rounded-t-3xl shadow-inner">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 MPPS Accessories. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#home" class="hover:text-blue-400 transition duration-300">Home</a>
+                <a href="#about" class="hover:text-blue-400 transition duration-300">About Us</a>
+                <a href="#products" class="hover:text-blue-400 transition duration-300">Products</a>
+                <a href="#contact" class="hover:text-blue-400 transition duration-300">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        document.getElementById('hamburger-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Slideshow functionality
+        let slideIndex = {
+            'home-slide': 1,
+            'product-slide': 1
+        };
+
+        function showSlides(n, className) {
+            let i;
+            let slides = document.getElementsByClassName(className);
+            if (n > slides.length) {slideIndex[className] = 1}
+            if (n < 1) {slideIndex[className] = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex[className]-1].style.display = "block";
+        }
+
+        function plusSlides(n, className) {
+            showSlides(slideIndex[className] += n, className);
+        }
+
+        // Initialize slideshows on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlides(1, 'home-slide');
+            showSlides(1, 'product-slide');
+        });
+
+        // Auto-advance slideshows (optional)
+        // setInterval(() => plusSlides(1, 'home-slide'), 5000); // Change image every 5 seconds
+        // setInterval(() => plusSlides(1, 'product-slide'), 5000); // Change image every 5 seconds
+
+    </script>
+</body>
+</html>
