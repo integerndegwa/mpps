@@ -20,47 +20,41 @@
             margin: auto;
             overflow: hidden;
             border-radius: 0.75rem; /* rounded-xl */
+            background-color: #ffffff; /* Ensure white background for contained images */
+            padding: 1.5rem; /* p-6 for more breathing room */
         }
         .mySlides {
             display: none;
             width: 100%;
-            height: 400px; /* Fixed height for consistency */
-            object-fit: cover; /* Ensures images cover the area */
+            max-height: 400px; /* Cap the height */
+            height: auto; /* Allow height to adjust based on content */
+            object-fit: contain; /* Ensures the whole image is visible without trimming */
+            background-color: #f0f0f0; /* Light background for empty space if image is smaller */
+            border-radius: 0.5rem; /* rounded-lg */
         }
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
             width: auto;
-            padding: 16px;
+            padding: 20px; /* More padding for easier click/tap */
             margin-top: -22px;
             color: white;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 24px; /* Slightly larger arrows */
             transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
             user-select: none;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6); /* Slightly darker background */
+            border-radius: 9999px; /* Fully rounded */
         }
         .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
+            right: 10px; /* Move slightly from the edge */
+        }
+        .prev {
+            left: 10px; /* Move slightly from the edge */
         }
         .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-        .active-dot, .dot:hover {
-            background-color: #717171;
+            background-color: rgba(0,0,0,0.9); /* Darker on hover */
         }
         /* Fade animation */
         .fade {
@@ -85,7 +79,7 @@
         <nav class="container mx-auto flex justify-between items-center">
             <!-- Company Logo -->
             <div class="flex items-center space-x-2">
-                <img src="mppslogo.jpg" alt="Company Logo" class="rounded-full">
+                <img src="mppslogo.jpg" alt="Company Logo" class="rounded-full shadow-sm">
                 <span class="text-2xl font-bold text-gray-900">MPPS</span>
             </div>
 
@@ -100,7 +94,7 @@
 
             <!-- Hamburger Menu for Mobile -->
             <div class="md:hidden">
-                <button id="hamburger-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                <button id="hamburger-button" class="text-gray-700 hover:text-blue-600 focus:outline-none p-2 rounded-md transition duration-300 ease-in-out">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
@@ -129,27 +123,18 @@
                 <p class="text-lg md:text-xl mb-8 opacity-90">Enhancing your driving experience with quality, security, and style.</p>
 
                 <!-- Home Page Slideshow -->
-                <div class="slideshow-container home-slideshow bg-white p-4 rounded-xl shadow-xl">
+                <div class="slideshow-container home-slideshow bg-white rounded-xl shadow-xl">
                     <div class="mySlides home-slide fade">
-                        <img src="slide0.jpg" alt="Car Security Systems" class="rounded-lg">
+                        <img src="slide0.jpg" alt="Car Security Systems">
                     </div>
                     <div class="mySlides home-slide fade">
-                        <img src="slide1.jpg" alt="In-Car Entertainment" class="rounded-lg">
+                        <img src="slide1.jpg" alt="In-Car Entertainment">
                     </div>
                     <div class="mySlides home-slide fade">
-                        <img src="slide2.jpg" alt="Vehicle Styling Accessories" class="rounded-lg">
+                        <img src="slide2.jpg" alt="Vehicle Styling Accessories">
                     </div>
                     <div class="mySlides home-slide fade">
-                        <img src="slide3.jpg" alt="GPS Tracking Solutions" class="rounded-lg">
-                    </div>
-                    <div class="mySlides home-slide fade">
-                        <img src="slide9.jpg" alt="GPS Tracking Solutions" class="rounded-lg">
-                    </div>
-                    <div class="mySlides home-slide fade">
-                        <img src="slide10.jpg" alt="GPS Tracking Solutions" class="rounded-lg">
-                    </div>
-                    <div class="mySlides home-slide fade">
-                        <img src="slide11.jpg" alt="GPS Tracking Solutions" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/BA68C8/FFFFFF?text=GPS+Tracking+Solutions" alt="GPS Tracking Solutions">
                     </div>
                     <a class="prev" onclick="plusSlides(-1, 'home-slide')">&#10094;</a>
                     <a class="next" onclick="plusSlides(1, 'home-slide')">&#10095;</a>
@@ -268,27 +253,30 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Our Universal Products</h2>
 
                 <!-- Universal Products Slideshow -->
-                <div class="slideshow-container product-slideshow bg-white p-4 rounded-xl shadow-xl">
+                <div class="slideshow-container product-slideshow bg-white rounded-xl shadow-xl">
                     <div class="mySlides product-slide fade">
-                        <img src="1.png" alt="Product 1" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/FFD54F/333333?text=Product+Image+1" alt="Product 1">
                     </div>
                     <div class="mySlides product-slide fade">
-                        <img src="2.png" alt="Product 2" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/A1887F/FFFFFF?text=Product+Image+2" alt="Product 2">
                     </div>
                     <div class="mySlides product-slide fade">
-                        <img src="4.png" alt="Product 3" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/90A4AE/FFFFFF?text=Product+Image+3" alt="Product 3">
                     </div>
                     <div class="mySlides product-slide fade">
-                        <img src="5.png" alt="Product 4" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/EF9A9A/FFFFFF?text=Product+Image+4" alt="Product 4">
                     </div>
                     <div class="mySlides product-slide fade">
-                        <img src="6.png" alt="Product 5" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/80CBC4/FFFFFF?text=Product+Image+5" alt="Product 5">
                     </div>
                     <div class="mySlides product-slide fade">
-                        <img src="7.png" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/C5E1A5/333333?text=Product+Image+6" alt="Product 6">
                     </div>
                     <div class="mySlides product-slide fade">
-                        <img src="8.png" alt="Product 7" class="rounded-lg">
+                        <img src="https://placehold.co/1200x400/FFCDD2/333333?text=Product+Image+7" alt="Product 7">
+                    </div>
+                    <div class="mySlides product-slide fade">
+                        <img src="https://placehold.co/1200x400/B39DDB/FFFFFF?text=Product+Image+8" alt="Product 8">
                     </div>
                     <a class="prev" onclick="plusSlides(-1, 'product-slide')">&#10094;</a>
                     <a class="next" onclick="plusSlides(1, 'product-slide')">&#10095;</a>
